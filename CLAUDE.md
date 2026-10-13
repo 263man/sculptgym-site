@@ -16,6 +16,7 @@ The website for Sculpt Gym, Bulawayo (sculptgym.co.zw). It is a copy of the orig
 - `vendor/`: unchanged copies of jQuery 3.7.1, slick 1.8.1 (sliders) and Magnific Popup 1.1.0 (photo lightbox). Do not edit.
 - `fonts/`: the Font Awesome icon font used by the slider arrows.
 - `en/`, `sn/`, `zu/`: redirects, so old links to sculptgym.co.zw/en, /sn and /zu still work.
+- `salon/`: the Sculpt Gym Salon page (sculptgym.co.zw/salon/), a second business run by Susan inside the gym. `salon/index.html` is self-contained, with its own lilac and plum styling, its fonts in `salon/fonts/` (free OFL fonts: Josefin Sans, Montserrat, Great Vibes) and its photos in `salon/images/`. The current photos are small crops of the salon's AI-made poster (`price-list.webp`, also offered as a download as `price-list-share.jpg`); replace them with real photos when the owner supplies them, keeping the file names or updating the `src` attributes.
 
 ## Where things are in index.html
 
@@ -24,7 +25,7 @@ Search for these ids or words to find each part.
 1. Two `<style>` blocks in the head. The first is Sitejet's base theme, minified; leave it alone. The second holds the page's own rules (hero slideshow, spacing), one rule per line.
 2. Hero banner: `sculpt-carousel-track` holds the slideshow images. The slideshow lists every image twice ("FULL SET" then "DUPLICATE FOR LOOP"); keep both lists the same so the loop is seamless. The headline is "Transform Your Body".
 3. About: `id="about-1"`, heading "Welcome to Sculpt Gym".
-4. Services: `id="services-2"`, the three boxes.
+4. Services: `id="services-2"`, the three boxes. Directly under the boxes sits the salon preview card, `<a class="salon-teaser">`, which links to `salon/`. Its styles are at the end of the page-specific `<style>` block. The top menu and footer menu also have a "Salon" link.
 5. Membership prices: the `<table>` after `<h2>Membership</h2>`.
 6. Opening hours: `preset-opening-hours-v3-default`, one box per day.
 7. "Ready to Start?" banner: `id="cta-1"`.

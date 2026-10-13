@@ -139,6 +139,21 @@ figure{margin:0}
 #ed-1444743312 .map-canvas { height: 360px; }
 #ed-1443864577 { min-height: 42px; }
 @media screen and (max-width: 575px) { #ed-1443864577 { min-height: 41px; }}
+/* Sculpt Gym Salon preview card (under Our Services). Salon colours: plum #615a88, lilac #dcd5e6. */
+@font-face { font-family: "Josefin Sans"; font-weight: 400; font-display: swap; src: url(salon/fonts/josefin-sans-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: "Montserrat"; font-weight: 400; font-display: swap; src: url(salon/fonts/montserrat-latin-400-normal.woff2) format("woff2"); }
+.salon-teaser { display: flex; align-items: center; gap: 26px; margin: 56px 0 0; padding: 22px 28px; border: 1px solid rgba(220, 213, 230, 0.35); background: linear-gradient(115deg, #2c2742 0%, #23202f 55%, #1d1c22 100%); color: #ece8f3; text-decoration: none; transition: border-color .3s ease, transform .3s ease; }
+.salon-teaser:hover, .salon-teaser:focus { color: #ece8f3; text-decoration: none; border-color: #dcd5e6; transform: translateY(-2px); }
+.salon-teaser-faces { display: flex; flex: none; }
+.salon-teaser-faces img { width: 58px; height: 58px; border-radius: 50%; object-fit: cover; border: 2px solid #dcd5e6; }
+.salon-teaser-faces img + img { margin-left: -14px; }
+.salon-teaser-text { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+.salon-teaser-kicker { font-family: "Josefin Sans", sans-serif; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: #b9aedb; }
+.salon-teaser-title { font-family: "Josefin Sans", sans-serif; font-size: 22px; letter-spacing: 0.18em; text-transform: uppercase; color: #ffffff; line-height: 1.2; }
+.salon-teaser-line { font-family: "Montserrat", sans-serif; font-size: 14px; color: #cfc8de; }
+.salon-teaser-cta { flex: none; padding: 11px 20px; border-radius: 999px; background: #dcd5e6; color: #2c2742; font-family: "Josefin Sans", sans-serif; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap; transition: background-color .3s ease; }
+.salon-teaser:hover .salon-teaser-cta { background: #ffffff; }
+@media screen and (max-width: 767px) { .salon-teaser { flex-direction: column; text-align: center; gap: 16px; margin-top: 40px; padding: 24px 20px; } .salon-teaser-text { align-items: center; } }
 </style>
 </head>
 <body class="page-22534654 pagelayout-1 index slogan culture-en"><a href="#main-content" class="wv-link-content button">Skip to main content</a>
@@ -206,7 +221,7 @@ figure{margin:0}
 <div class="ed-element ed-container flex-align-items-center wv-boxed menu-wrapper wv-overflow_visible preset-menu-v2-home-hero-logo-nav-h1-slogan-menu" id="ed-1443864595">
 <div class="inner">
 <div class="ed-element ed-logo" id="ed-1443864598"><h1><span data-bind="customer.company">Sculpt Gym</span></h1></div>
-<nav class="ed-element ed-menu wv-custom" id="ed-1443864601"><ul class="menu-level-0"><li class="first"><a href="#home-3" class="first">Home</a></li><li><a href="#about-1">About</a></li><li><a href="#services-2">Services</a></li><li><a href="#cta-1">Join Now</a></li><li><a href="#contact-us-1">Contact</a></li></ul></nav>
+<nav class="ed-element ed-menu wv-custom" id="ed-1443864601"><ul class="menu-level-0"><li class="first"><a href="#home-3" class="first">Home</a></li><li><a href="#about-1">About</a></li><li><a href="#services-2">Services</a></li><li><a href="salon/">Salon</a></li><li><a href="#cta-1">Join Now</a></li><li><a href="#contact-us-1">Contact</a></li></ul></nav>
 <div class="ed-element ed-container mobile-cont wv-overflow_visible" id="ed-1443864604">
 <div class="inner">
 <figure class="ed-element ed-icon" id="ed-1443864607"><a href="https://wa.me/263775107207?text=Hi%2C%20I%20got%20your%20number%20from%20the%20Sculpt%20Gym%20website%20" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="170 -787 659 875" data-icon="ico-phone" preserveAspectRatio="xMidYMid"><path d="M390.7 -496.7C270.4 -427.2 453.9 -83.1 585.6 -159.1L707.7 52.3C652.1 84.4 605.2 104.6 540.8 67.8 362 -34.4 165.2 -375.1 170.8 -578.3c1.9 -70.6 43.6 -98.3 97.9 -129.7 23.3 40.4 98.6 170.8 122 211.3zm50.4 -5.7c-13 7.5 -29.7 3.1 -37.3 -10l-115 -199.3c-7.5 -13 -3.1 -29.7 10 -37.3l60.5 -34.9c13 -7.5 29.7 -3.1 37.3 10L511.7 -574.6c7.5 13 3.1 29.7 -10 37.2l-60.6 35zM755.5 42.1c-13 7.5 -29.7 3.1 -37.3 -10l-115 -199.3c-7.5 -13 -3.1 -29.7 10 -37.3l60.5 -34.9c13 -7.5 29.7 -3.1 37.3 10L826.1 -30.1c7.5 13 3.1 29.7 -10 37.3l-60.6 34.9z"></path></svg></a></figure>
@@ -264,7 +279,13 @@ figure{margin:0}
 <div class="ed-element ed-spacer" id="ed-1443864322"><div class="space"></div></div>
 <div class="ed-element ed-headline custom-theme" id="ed-1443864325"><h3>Beginner-Friendly Programs</h3></div>
 <div class="ed-element ed-spacer" id="ed-1443864328"><div class="space"></div></div>
-<div class="ed-element ed-text custom-theme" id="ed-1443864331"><p>No experience needed. We help you start safely and confidently.</p></div></div></div></div></div></div></div></div></div>
+<div class="ed-element ed-text custom-theme" id="ed-1443864331"><p>No experience needed. We help you start safely and confidently.</p></div></div></div></div></div></div></div>
+<!-- Sculpt Gym Salon preview. Links to the salon page (salon/index.html). -->
+<a class="salon-teaser" href="salon/" data-animation="{&quot;type&quot;:&quot;move-bottom-to-top&quot;,&quot;initial&quot;:&quot;hide&quot;,&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;0s&quot;,&quot;trigger&quot;:&quot;scroll&quot;}">
+<span class="salon-teaser-faces" aria-hidden="true"><img src="salon/images/recover.webp" alt="" width="88" height="88" loading="lazy"><img src="salon/images/restore.webp" alt="" width="88" height="88" loading="lazy"><img src="salon/images/rejuvenate.webp" alt="" width="88" height="88" loading="lazy"></span>
+<span class="salon-teaser-text"><span class="salon-teaser-kicker">Also at Sculpt Gym</span><span class="salon-teaser-title">Sculpt Gym Salon</span><span class="salon-teaser-line">Massage, beauty and nail care to help you recover. Treatments from&nbsp;$5.</span></span>
+<span class="salon-teaser-cta">Visit the salon <span aria-hidden="true">&rarr;</span></span>
+</a></div></div>
 <div class="ed-element ed-separator" id="ed-1445688589"><hr class="bg-primary"></div>
 <div class="ed-element ed-container wv-boxed wv-spacer flex-align-content-space-around flex-align-items-start flex-align-content-start preset-pricing-table-v3-default animation-initial" id="ed-1444454327" data-animation="{&quot;type&quot;:&quot;move-bottom-to-top&quot;,&quot;initial&quot;:&quot;hide&quot;,&quot;keepHeight&quot;:true,&quot;duration&quot;:&quot;5s&quot;,&quot;delay&quot;:&quot;0s&quot;,&quot;overlay&quot;:{&quot;width&quot;:&quot;auto&quot;},&quot;trigger&quot;:&quot;scroll&quot;,&quot;group&quot;:{&quot;name&quot;:&quot;&quot;,&quot;behavior&quot;:{&quot;show&quot;:&quot;&quot;,&quot;hide&quot;:&quot;&quot;}},&quot;closeText&quot;:&quot;&quot;}">
 <div class="inner">
@@ -395,7 +416,7 @@ Join me at the gym for amazing results!
 <div class="inner">
 <div class="ed-element ed-headline custom-theme" id="ed-1443864466"><h3>Navigation</h3></div>
 <div class="ed-element ed-spacer" id="ed-1443864469"><div style="height: 16px;" class="space"></div></div>
-<nav class="ed-element ed-menu wv-custom scroll" id="ed-1443864475"><ul class="menu-level-0"><li class="first"><a href="#home-3" class="first">Home</a></li><li><a href="#about-1">About</a></li><li><a href="#services-2">Services</a></li><li><a href="#cta-1">Join Now</a></li><li><a href="#contact-us-1">Contact</a></li></ul></nav>
+<nav class="ed-element ed-menu wv-custom scroll" id="ed-1443864475"><ul class="menu-level-0"><li class="first"><a href="#home-3" class="first">Home</a></li><li><a href="#about-1">About</a></li><li><a href="#services-2">Services</a></li><li><a href="salon/">Salon</a></li><li><a href="#cta-1">Join Now</a></li><li><a href="#contact-us-1">Contact</a></li></ul></nav>
 <div class="ed-element ed-text custom-theme" id="ed-1443864484"><ul><li><a href="/legal-notice">Legal Notice</a></li><li><a href="/privacy">Privacy Policy</a></li></ul></div></div></div>
 <div class="ed-element ed-container footer-saga-box" id="ed-1443864490">
 <div class="inner">
