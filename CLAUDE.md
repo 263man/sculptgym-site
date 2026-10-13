@@ -12,7 +12,7 @@ The website for Sculpt Gym, Bulawayo (sculptgym.co.zw). It is a copy of the orig
 ## Files
 
 - `index.html`: the whole page. Text, layout, styles and the site's own scripts are all in this one file.
-- `images/`: photos and icons. `team-N.jpg` is a team card in the slider and `team-N-large.webp` is the full-size version opened on click. `gallery-NN.webp` is a gallery thumbnail (800px wide) and `gallery-NN-large.webp` is its full-size version (1200px). `hero-NN.webp` are banner slideshow photos. `about.webp` is the "Welcome" photo.
+- `images/`: photos and icons. Photos shown on the page have an AVIF copy (`.avif`, about 40% smaller, checked to be visually identical) that browsers use first through `<picture>`; the `.webp`/`.jpg` file is the fallback. When replacing a photo, replace both, or delete the old `.avif` and its `<source>` line. `team-N-576.avif` is the smaller team card sent to phones. `team-N.jpg` is a team card in the slider and `team-N-large.webp` is the full-size version opened on click. `gallery-NN.webp` is a gallery thumbnail (800px wide) and `gallery-NN-large.webp` is its full-size version (1200px). `hero-NN.webp` are banner slideshow photos. `about.webp` is the "Welcome" photo.
 - `vendor/`: unchanged copies of jQuery 3.7.1, slick 1.8.1 (sliders) and Magnific Popup 1.1.0 (photo lightbox). Do not edit.
 - `fonts/`: the Font Awesome icon font used by the slider arrows.
 - `js/light-trace.js`: the travelling-light effect, shared by both pages. Add `data-light-trace` to any element to give it the light.
@@ -24,7 +24,7 @@ The website for Sculpt Gym, Bulawayo (sculptgym.co.zw). It is a copy of the orig
 Search for these ids or words to find each part.
 
 1. Two `<style>` blocks in the head. The first is Sitejet's base theme, minified; leave it alone. The second holds the page's own rules (hero slideshow, spacing), one rule per line.
-2. Hero banner: `sculpt-carousel-track` holds the slideshow images. The slideshow lists every image twice ("FULL SET" then "DUPLICATE FOR LOOP"); keep both lists the same so the loop is seamless. The headline is "Transform Your Body".
+2. Hero banner: `sculpt-carousel-track` holds the slideshow images. A short script hides each slide until its photo has loaded, so slow photos never show as black gaps. The slideshow lists every image twice ("FULL SET" then "DUPLICATE FOR LOOP"); keep both lists the same so the loop is seamless. The headline is "Transform Your Body".
 3. About: `id="about-1"`, heading "Welcome to Sculpt Gym".
 4. Services: `id="services-2"`, the three boxes. Directly under the boxes sits the salon preview card, `<a class="salon-teaser">`, which links to `salon/`. Its styles are at the end of the page-specific `<style>` block. The top menu and footer menu also have a "Salon" link. A light with a smoothly fading tail travels round the card's edge. It is drawn by `js/light-trace.js`; its colours, speed and tail length are the `data-light-*` attributes on the card (the script explains each one).
 5. Membership prices: the `<table>` after `<h2>Membership</h2>`.
@@ -45,7 +45,7 @@ The owner asked for the page to feel more alive, so it uses the scrollcraft engi
 1. Sections carry `data-sc-act="flow"`; the engine publishes their scroll progress as `--sc-p`. The banner uses it in CSS: the slideshow zooms and darkens and the headline lifts away as you scroll.
 2. Section headings build word by word: `data-sc-cue="from to rampIn 0" data-sc-kinetic="words"`. The numbers were measured so each heading finishes just after it enters view on desktop and phone; re-measure if a section's height changes a lot.
 3. Content blocks fade up once when they come into view: `data-sc-in`; a parent with `data-sc-stagger="ms"` reveals its children one after another (service boxes, price rows, opening hours).
-4. Prices count up: `<span data-sc-count="0 50">50</span>`. When a price changes, change both numbers.
+4. Prices are plain text and do not count up: the owner removed that effect, because a screenshot taken mid-count showed wrong prices. Do not add it back.
 5. The welcome photo is wiped in (`data-sc-reveal`) and drifts (`data-sc-parallax`).
 6. The gallery is pinned (`data-sc-act="pan" data-sc-span="3.4"`): the section holds while the photo row (`data-sc-pan`) slides sideways, and a small script turns each photo as it crosses the centre. Adding or removing photos works without other changes.
 7. Service boxes tilt towards the mouse (`data-sc-tilt`) and the "Join Now" button drifts towards it (`data-sc-magnet`), on computers only.
