@@ -131,35 +131,9 @@ a { color: inherit; }
 .foot a:hover { color: var(--lilac); }
 
 /* ---------- Light effects ----------
-   1. .glow-trace: a meteor of light runs round the element's edge (booking card, treatment cards).
-      Colours come from the --t-* variables; --lap sets the lap time and --delay staggers the cards.
+   1. The light travelling round the booking card is drawn by ../js/light-trace.js (settings: the data-light-* attributes on the card).
    2. .meteor: occasional shooting stars across the opening banner.
    3. .glow-pulse: a soft breathing glow on the main booking buttons; the lotus glows the same way. */
-.glow-trace { position: relative; --lap: 9s; --delay: 0s; --t-head: #ffffff; --t-halo: #8f7cf0; --t-1: #7a66e0; --t-2: #8f80e4; --t-3: #a99ee8; --t-4: #c4bcee; --t-5: #ddd8f2; --t-glow: #9c8cf0; }
-.trace { position: absolute; top: -1px; left: -1px; width: calc(100% + 2px); height: calc(100% + 2px); overflow: visible; pointer-events: none; z-index: 2; }
-.trace rect { fill: none; stroke-linecap: round; animation: var(--lap) linear var(--delay) infinite; }
-.trace .glow { stroke: var(--t-glow); stroke-width: 10; opacity: 0.45; stroke-dasharray: 14 86; animation-name: trace-14; }
-.trace .t5 { stroke: var(--t-5); stroke-width: 1.5; opacity: 0.5; stroke-dasharray: 34 66; animation-name: trace-34; }
-.trace .t4 { stroke: var(--t-4); stroke-width: 2; opacity: 0.65; stroke-dasharray: 26 74; animation-name: trace-26; }
-.trace .t3 { stroke: var(--t-3); stroke-width: 2.5; opacity: 0.8; stroke-dasharray: 16 84; animation-name: trace-16; }
-.trace .t2 { stroke: var(--t-2); stroke-width: 3; opacity: 0.9; stroke-dasharray: 9 91; animation-name: trace-9; }
-.trace .t1 { stroke: var(--t-1); stroke-width: 3.5; stroke-dasharray: 4 96; animation-name: trace-4; }
-.trace .halo { stroke: var(--t-halo); stroke-width: 15; opacity: 0.9; stroke-dasharray: 1.5 98.5; animation-name: trace-1-5; }
-.trace .head { stroke: var(--t-head); stroke-width: 5; stroke-dasharray: 0.8 99.2; animation-name: trace-0-8; }
-@keyframes trace-34 { from { stroke-dashoffset: 34; } to { stroke-dashoffset: -66; } }
-@keyframes trace-26 { from { stroke-dashoffset: 26; } to { stroke-dashoffset: -74; } }
-@keyframes trace-16 { from { stroke-dashoffset: 16; } to { stroke-dashoffset: -84; } }
-@keyframes trace-14 { from { stroke-dashoffset: 14; } to { stroke-dashoffset: -86; } }
-@keyframes trace-9 { from { stroke-dashoffset: 9; } to { stroke-dashoffset: -91; } }
-@keyframes trace-4 { from { stroke-dashoffset: 4; } to { stroke-dashoffset: -96; } }
-@keyframes trace-1-5 { from { stroke-dashoffset: 1.5; } to { stroke-dashoffset: -98.5; } }
-@keyframes trace-0-8 { from { stroke-dashoffset: 0.8; } to { stroke-dashoffset: -99.2; } }
-/* On the plum booking card the light is white and lilac. */
-.booking-card.glow-trace { --lap: 7s; --t-head: #ffffff; --t-halo: #ffffff; --t-1: #ffffff; --t-2: #f0ebff; --t-3: #d9d0ff; --t-4: #b9adf0; --t-5: #9a8dd8; --t-glow: #e3dbff; overflow: visible; }
-.cards .card:nth-child(2) { --delay: -3s; }
-.cards .card:nth-child(3) { --delay: -6s; }
-.booking-card .trace .halo, .booking-card .trace .glow { opacity: 1; }
-.card { overflow: visible; }
 .card-photo { border-radius: 21px 21px 0 0; }
 
 /* Shooting stars over the opening banner */
@@ -187,7 +161,7 @@ a { color: inherit; }
 @keyframes lotus-glow { 0%, 100% { filter: drop-shadow(0 0 0 rgba(143, 124, 240, 0)); } 50% { filter: drop-shadow(0 0 10px rgba(143, 124, 240, 0.75)); } }
 
 @media (prefers-reduced-motion: reduce) {
-	.trace, .meteor { display: none; }
+	.meteor { display: none; }
 	.glow-pulse, .lotus { animation: none; }
 }
 
@@ -222,8 +196,6 @@ a { color: inherit; }
 
 <!-- Symbols reused on the page -->
 <svg width="0" height="0" style="position: absolute;" aria-hidden="true">
-	<filter id="trace-soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
-	<filter id="trace-bloom" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 	<symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></symbol>
 	<symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 3h3l2 5-2.5 1.5a11 11 0 0 0 7 7L16 14l5 2v3a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
 	<symbol id="i-lotus" viewBox="0 0 120 84"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M60 6c13 15 15 39 0 60C45 45 47 21 60 6z"/><path d="M60 20c7 10 8 25 0 39-8-14-7-29 0-39z" stroke-width="2"/><path d="M60 66c4-20 14-34 32-42 3 21-10 38-32 42z"/><path d="M60 66c-4-20-14-34-32-42-3 21 10 38 32 42z"/><path d="M60 66c20 0 38-10 52-26-4 22-24 32-52 26z"/><path d="M60 66c-20 0-38-10-52-26 4 22 24 32 52 26z"/></g></symbol>
@@ -278,7 +250,7 @@ a { color: inherit; }
 				<h2>Treatments &amp; prices</h2>
 			</div>
 			<div class="cards">
-				<article class="card glow-trace">
+				<article class="card">
 					<img class="card-photo" src="images/massage.webp" alt="Back massage" width="194" height="206" loading="lazy">
 					<div class="card-body">
 						<h3><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 3a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM7 21l1-9-3-2M17 21l-1-9 3-2M8 12h8M10 15h.01M14 15h.01M12 18h.01"/></svg>Recovery &amp; massage</h3>
@@ -293,7 +265,7 @@ a { color: inherit; }
 						</ul>
 					</div>
 				</article>
-				<article class="card glow-trace">
+				<article class="card">
 					<img class="card-photo" src="images/facial.webp" alt="Facial treatment" width="194" height="170" loading="lazy">
 					<div class="card-body">
 						<h3><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 3c-4 0-6 3-6 7 0 5 3 9 6 9s6-4 6-9c0-4-2-7-6-7zM9.5 11.5h.01M14.5 11.5h.01M10 15c1 .8 3 .8 4 0M19 4l.6 1.4L21 6l-1.4.6L19 8l-.6-1.4L17 6l1.4-.6z"/></svg>Beauty services</h3>
@@ -308,7 +280,7 @@ a { color: inherit; }
 						</ul>
 					</div>
 				</article>
-				<article class="card glow-trace">
+				<article class="card">
 					<img class="card-photo" src="images/nails.webp" alt="Nail treatment" width="194" height="103" loading="lazy">
 					<div class="card-body">
 						<h3><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 3h3v4H9zM8 7h5l1 3v10H7V10zM16 20c3-1 4-4 4-8l-2-1-2 3"/></svg>Nail services</h3>
@@ -334,7 +306,7 @@ a { color: inherit; }
 	<!-- Booking -->
 	<section class="booking" id="book">
 		<div class="wrap">
-			<div class="booking-card glow-trace">
+			<div class="booking-card" data-light-trace data-light-lap="8" data-light-tail="0.28" data-light-head="#ffffff" data-light-mid="#e3dbff" data-light-end="#8a7fc4" data-light-glow="#efe9ff">
 				<div>
 					<span class="kicker">Bookings</span>
 					<p class="signature">Susan</p>
@@ -359,17 +331,6 @@ a { color: inherit; }
 	</div>
 </footer>
 
-<script>
-/* Draws the travelling light into every element with class "glow-trace". */
-document.querySelectorAll('.glow-trace').forEach(function (el) {
-	var r = parseFloat(getComputedStyle(el).borderTopLeftRadius) || 0;
-	var rect = function (cls, filter) {
-		return '<rect class="' + cls + '" width="100%" height="100%" rx="' + (r + 1) + '" pathLength="100"' + (filter ? ' filter="url(#' + filter + ')"' : '') + '/>';
-	};
-	el.insertAdjacentHTML('beforeend', '<svg class="trace" aria-hidden="true">' +
-		rect('glow', 'trace-soft') + rect('t5') + rect('t4') + rect('t3') + rect('t2') + rect('t1', 'trace-bloom') +
-		rect('halo', 'trace-soft') + rect('head', 'trace-bloom') + '</svg>');
-});
-</script>
+<script src="../js/light-trace.js"></script>
 </body>
 </html>
