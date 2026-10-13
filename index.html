@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Sculpt Gym  Byo | Personal Training &amp; Strength Coaching - Sculpt your body. Sculpt your mind!</title>
+<title>Sculpt Gym  Byo | Personal Training &amp; Strength Coaching - Sculpt your body. Sculpt your mind.</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="keywords" content="Bulawayo , Zimbabwe, Byo , Gym, Fitness Centre, Personal Training, Group Classes, Cardio, Lose weight, Fitness Goals,  weight-loss, affordable , sports,  keto , diet">
 <meta name="description" content="Training gym in Bulawayo focused on strength, coaching, and real results. Train with experienced coaches in a supportive, refreshing outdoors environment.b">
@@ -10,7 +10,7 @@
 <meta name="icbm" content="-20.1508374,28.5958575">
 <meta name="geo.position" content="-20.1508374;28.5958575">
 <meta name="geo.placename" content="Bulawayo">
-<meta property="og:title" content="Sculpt Gym  Byo | Personal Training &amp; Strength Coaching - Sculpt your body. Sculpt your mind!">
+<meta property="og:title" content="Sculpt Gym  Byo | Personal Training &amp; Strength Coaching - Sculpt your body. Sculpt your mind.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://sculptgym.co.zw/images/share.jpg">
@@ -142,7 +142,7 @@ figure{margin:0}
 /* Sculpt Gym Salon preview card (under Our Services). Salon colours: plum #615a88, lilac #dcd5e6. */
 @font-face { font-family: "Josefin Sans"; font-weight: 400; font-display: swap; src: url(salon/fonts/josefin-sans-latin-400-normal.woff2) format("woff2"); }
 @font-face { font-family: "Montserrat"; font-weight: 400; font-display: swap; src: url(salon/fonts/montserrat-latin-400-normal.woff2) format("woff2"); }
-.salon-teaser { display: flex; align-items: center; gap: 26px; margin: 56px 0 0; padding: 22px 28px; border: 1px solid rgba(220, 213, 230, 0.35); background: linear-gradient(115deg, #2c2742 0%, #23202f 55%, #1d1c22 100%); color: #ece8f3; text-decoration: none; transition: border-color .3s ease, transform .3s ease; }
+.salon-teaser { display: flex; align-items: center; gap: 26px; margin: 56px 0 0; padding: 22px 28px; border: 1px solid rgba(220, 213, 230, 0.22); background: linear-gradient(115deg, #2c2742 0%, #23202f 55%, #1d1c22 100%); color: #ece8f3; text-decoration: none; transition: border-color .3s ease, transform .3s ease; }
 .salon-teaser:hover, .salon-teaser:focus { color: #ece8f3; text-decoration: none; border-color: #dcd5e6; transform: translateY(-2px); }
 .salon-teaser-faces { display: flex; flex: none; }
 .salon-teaser-faces img { width: 58px; height: 58px; border-radius: 50%; object-fit: cover; border: 2px solid #dcd5e6; }
@@ -153,6 +153,32 @@ figure{margin:0}
 .salon-teaser-line { font-family: "Montserrat", sans-serif; font-size: 14px; color: #cfc8de; }
 .salon-teaser-cta { flex: none; padding: 11px 20px; border-radius: 999px; background: #dcd5e6; color: #2c2742; font-family: "Josefin Sans", sans-serif; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap; transition: background-color .3s ease; }
 .salon-teaser:hover .salon-teaser-cta { background: #ffffff; }
+/* The light travelling round the salon card: a bright head with a tail that fades behind it.
+   Each layer is a dash of a different length; all end at the same point, so they read as one meteor.
+   The lap time is the 7s in .salon-trace rect; the hover speed is the 3.5s below it. */
+.salon-teaser { position: relative; }
+.salon-teaser .salon-trace { position: absolute; top: -1px; left: -1px; width: calc(100% + 2px); height: calc(100% + 2px); overflow: visible; pointer-events: none; }
+.salon-trace rect { fill: none; stroke-linecap: round; animation: 7s linear infinite; }
+.salon-trace .tail-glow { stroke: #9a8ad8; stroke-width: 9; opacity: 0.45; stroke-dasharray: 14 86; animation-name: salon-trace-14; }
+.salon-trace .tail-5 { stroke: #5a5090; stroke-width: 1.5; opacity: 0.4; stroke-dasharray: 34 66; animation-name: salon-trace-34; }
+.salon-trace .tail-4 { stroke: #6f63a8; stroke-width: 2; opacity: 0.55; stroke-dasharray: 26 74; animation-name: salon-trace-26; }
+.salon-trace .tail-3 { stroke: #9384cc; stroke-width: 2.5; opacity: 0.75; stroke-dasharray: 16 84; animation-name: salon-trace-16; }
+.salon-trace .tail-2b { stroke: #ab9de0; stroke-width: 2.75; opacity: 0.8; stroke-dasharray: 11.5 88.5; animation-name: salon-trace-11-5; }
+.salon-trace .tail-2 { stroke: #c2b6ec; stroke-width: 3; opacity: 0.9; stroke-dasharray: 8 92; animation-name: salon-trace-8; }
+.salon-trace .tail-1 { stroke: #efeaff; stroke-width: 3.5; stroke-dasharray: 3.5 96.5; animation-name: salon-trace-3; }
+.salon-trace .halo { stroke: #ddd3ff; stroke-width: 14; opacity: 0.9; stroke-dasharray: 1.5 98.5; animation-name: salon-trace-1-5; }
+.salon-trace .head { stroke: #ffffff; stroke-width: 5; stroke-dasharray: 0.8 99.2; animation-name: salon-trace-1; }
+.salon-teaser:hover .salon-trace rect { animation-duration: 3.5s; }
+@keyframes salon-trace-34 { from { stroke-dashoffset: 34; } to { stroke-dashoffset: -66; } }
+@keyframes salon-trace-11-5 { from { stroke-dashoffset: 11.5; } to { stroke-dashoffset: -88.5; } }
+@keyframes salon-trace-26 { from { stroke-dashoffset: 26; } to { stroke-dashoffset: -74; } }
+@keyframes salon-trace-16 { from { stroke-dashoffset: 16; } to { stroke-dashoffset: -84; } }
+@keyframes salon-trace-14 { from { stroke-dashoffset: 14; } to { stroke-dashoffset: -86; } }
+@keyframes salon-trace-8 { from { stroke-dashoffset: 8; } to { stroke-dashoffset: -92; } }
+@keyframes salon-trace-3 { from { stroke-dashoffset: 3.5; } to { stroke-dashoffset: -96.5; } }
+@keyframes salon-trace-1-5 { from { stroke-dashoffset: 1.5; } to { stroke-dashoffset: -98.5; } }
+@keyframes salon-trace-1 { from { stroke-dashoffset: 0.8; } to { stroke-dashoffset: -99.2; } }
+@media (prefers-reduced-motion: reduce) { .salon-trace { display: none; } }
 @media screen and (max-width: 767px) { .salon-teaser { flex-direction: column; text-align: center; gap: 16px; margin-top: 40px; padding: 24px 20px; } .salon-teaser-text { align-items: center; } }
 </style>
 </head>
@@ -282,6 +308,7 @@ figure{margin:0}
 <div class="ed-element ed-text custom-theme" id="ed-1443864331"><p>No experience needed. We help you start safely and confidently.</p></div></div></div></div></div></div></div>
 <!-- Sculpt Gym Salon preview. Links to the salon page (salon/index.html). -->
 <a class="salon-teaser" href="salon/" data-animation="{&quot;type&quot;:&quot;move-bottom-to-top&quot;,&quot;initial&quot;:&quot;hide&quot;,&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;0s&quot;,&quot;trigger&quot;:&quot;scroll&quot;}">
+<svg class="salon-trace" aria-hidden="true"><defs><filter id="salon-soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter><filter id="salon-bloom" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><rect class="tail-glow" width="100%" height="100%" pathLength="100" filter="url(#salon-soft)"/><rect class="tail-5" width="100%" height="100%" pathLength="100"/><rect class="tail-4" width="100%" height="100%" pathLength="100"/><rect class="tail-3" width="100%" height="100%" pathLength="100"/><rect class="tail-2b" width="100%" height="100%" pathLength="100"/><rect class="tail-2" width="100%" height="100%" pathLength="100"/><rect class="tail-1" width="100%" height="100%" pathLength="100" filter="url(#salon-bloom)"/><rect class="halo" width="100%" height="100%" pathLength="100" filter="url(#salon-soft)"/><rect class="head" width="100%" height="100%" pathLength="100" filter="url(#salon-bloom)"/></svg>
 <span class="salon-teaser-faces" aria-hidden="true"><img src="salon/images/recover.webp" alt="" width="88" height="88" loading="lazy"><img src="salon/images/restore.webp" alt="" width="88" height="88" loading="lazy"><img src="salon/images/rejuvenate.webp" alt="" width="88" height="88" loading="lazy"></span>
 <span class="salon-teaser-text"><span class="salon-teaser-kicker">Also at Sculpt Gym</span><span class="salon-teaser-title">Sculpt Gym Salon</span><span class="salon-teaser-line">Massage, beauty and nail care to help you recover. Treatments from&nbsp;$5.</span></span>
 <span class="salon-teaser-cta">Visit the salon <span aria-hidden="true">&rarr;</span></span>
