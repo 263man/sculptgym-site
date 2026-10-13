@@ -4,7 +4,7 @@ The website for Sculpt Gym, Bulawayo (sculptgym.co.zw). It is a copy of the orig
 
 ## Ground rules
 
-- The design must stay exactly as it is. Do not restyle, modernise or "tidy" anything unless the owner asks for that specific change.
+- The look must stay as it is: the owner approved the Sitejet design plus the scroll effects described below. Do not restyle, modernise or "tidy" anything unless the owner asks for that specific change.
 - Edit `index.html` directly. There is no build step and no framework. Committing to `main` publishes the site: the workflow in `.github/workflows/pages.yml` deploys it to GitHub Pages in about a minute.
 - Keep Sitejet's class names and `ed-...` ids. The styles depend on them.
 - The owner is not a developer. Explain changes in plain words.
@@ -37,6 +37,21 @@ Search for these ids or words to find each part.
 12. Footer: `id="footer-2"`: address, phone, email, menu and social links.
 13. Map: `ed-map`, a Google Maps embed.
 14. Scripts at the end: libraries from `vendor/`, then the site script (animations, parallax, sliders, lightbox), then Sitejet's menu script.
+
+## Scroll effects
+
+The owner asked for the page to feel more alive, so it uses the scrollcraft engine (`js/scrollcraft.js`, MIT licence, from github.com/nateherkai/scroll-craft; only its effect rules were taken, not its page-wide styles). The site as it was before this is kept on the branch `before-scroll-effects`.
+
+1. Sections carry `data-sc-act="flow"`; the engine publishes their scroll progress as `--sc-p`. The banner uses it in CSS: the slideshow zooms and darkens and the headline lifts away as you scroll.
+2. Section headings build word by word: `data-sc-cue="from to rampIn 0" data-sc-kinetic="words"`. The numbers were measured so each heading finishes just after it enters view on desktop and phone; re-measure if a section's height changes a lot.
+3. Content blocks fade up once when they come into view: `data-sc-in`; a parent with `data-sc-stagger="ms"` reveals its children one after another (service boxes, price rows, opening hours).
+4. Prices count up: `<span data-sc-count="0 50">50</span>`. When a price changes, change both numbers.
+5. The welcome photo is wiped in (`data-sc-reveal`) and drifts (`data-sc-parallax`).
+6. The gallery is pinned (`data-sc-act="pan" data-sc-span="3.4"`): the section holds while the photo row (`data-sc-pan`) slides sideways, and a small script turns each photo as it crosses the centre. Adding or removing photos works without other changes.
+7. Service boxes tilt towards the mouse (`data-sc-tilt`) and the "Join Now" button drifts towards it (`data-sc-magnet`), on computers only.
+8. A thin yellow line at the top shows how far down the page you are (`.scroll-progress`).
+
+The styles are in the "Scroll effects" part of the page-specific `<style>` block; the start-up script is at the end of the page, after `js/scrollcraft.js`. Sitejet layout rules fight the gallery pin (stretching, centring, clipping); the overrides for that are commented there.
 
 ## Known quirks copied on purpose from the original
 

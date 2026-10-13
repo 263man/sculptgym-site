@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add('sc-on');</script>
 <title>Sculpt Gym  Byo | Personal Training &amp; Strength Coaching - Sculpt your body. Sculpt your mind.</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="keywords" content="Bulawayo , Zimbabwe, Byo , Gym, Fitness Centre, Personal Training, Group Classes, Cardio, Lose weight, Fitness Goals,  weight-loss, affordable , sports,  keto , diet">
@@ -156,11 +157,58 @@ figure{margin:0}
 /* The light travelling round the salon card is drawn by js/light-trace.js (settings: the data-light-* attributes on the card). */
 .salon-teaser { position: relative; }
 @media screen and (max-width: 767px) { .salon-teaser { flex-direction: column; text-align: center; gap: 16px; margin-top: 40px; padding: 24px 20px; } .salon-teaser-text { align-items: center; } }
+/* ================= Scroll effects =================
+   Driven by js/scrollcraft.js (the scrollcraft engine, MIT licence). Sections marked data-sc-act publish their
+   scroll progress as --sc-p (0 to 1); data-sc-cue fades content in, data-sc-kinetic builds a heading word by word,
+   data-sc-count counts a number up, data-sc-reveal wipes an image in, data-sc-parallax drifts it, data-sc-pan slides
+   the gallery row, data-sc-tilt / data-sc-magnet follow the mouse. Restore point without any of this: branch
+   "before-scroll-effects" on GitHub. */
+.sc-on [data-sc-cue] { opacity: 0; will-change: opacity, transform; }
+.sc-split { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.12em; margin-bottom: -0.12em; }
+.sc-split--line { display: block; }
+.sc-split__i { display: inline-block; will-change: transform, opacity; }
+.sc-is-split { opacity: 1 !important; }
+[data-sc-pan] { will-change: transform; }
+[data-sc-reveal] { will-change: clip-path; }
+[data-sc-parallax] { will-change: transform; }
+[data-sc-tilt] { transform-style: preserve-3d; will-change: transform; }
+.sc-on [data-sc-in], .sc-on [data-sc-stagger] > * { opacity: 0; transform: translate3d(0, 14px, 0); transition: opacity 620ms cubic-bezier(.16, 1, .3, 1), transform 620ms cubic-bezier(.16, 1, .3, 1); }
+.sc-on [data-sc-in].sc-in, .sc-on [data-sc-stagger] > .sc-in { opacity: 1; transform: none; }
+.scroll-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 100000; background: #FFD200; transform-origin: 0 50%; transform: scaleX(0); pointer-events: none; }
+
+/* Banner: as you scroll away the slideshow zooms in and darkens, and the headline lifts and fades. */
+#ed-1443864589 { --hero-out: calc((var(--sc-p, 0.5) - 0.5) * 2); }
+#ed-1443864589 .sculpt-banner-content { transform: scale(calc(1 + var(--hero-out) * 0.14)); transform-origin: 50% 40%; }
+#ed-1443864589 > .overlay { background-color: rgba(0, 0, 0, calc(0.3 + var(--hero-out) * 0.45)); }
+#ed-1443864613 > .inner { transform: translate3d(0, calc(var(--hero-out) * -90px), 0); opacity: calc(1 - var(--hero-out) * 1.4); }
+
+/* Welcome photo drifts inside its frame, so the frame is a little taller than the photo area. */
+#ed-1443864184 > .background-image-holder { top: -48px !important; bottom: -48px !important; height: auto !important; }
+
+/* Gallery: the section holds still while the photos slide past, each turning as it crosses the centre. */
+#ed-1443864583 { overflow: clip !important; display: block !important; align-content: normal !important; }
+#gallery-1.gallery-stage { position: sticky; top: 0; flex: none !important; width: 100% !important; margin: 0 !important; height: 100vh; height: 100svh; overflow: clip !important; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: center; align-items: stretch; align-content: stretch; gap: 28px; padding: 0 !important; }
+#gallery-1 > .ed-gallery { flex: none !important; width: 100%; }
+.gallery-head { padding: 0 max(16px, calc((100vw - 944px) / 2)); }
+.gallery-kicker { margin: 0 0 6px; font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase; color: #E5E5E5; }
+.gallery-head h2 { margin: 0; }
+#ed-1443864586 .ed-gallery-items { display: flex !important; flex-wrap: nowrap !important; align-items: center; gap: 16px; width: max-content !important; margin: 0 !important; padding: 0 max(16px, calc((100vw - 944px) / 2)) !important; }
+#ed-1443864586 .ed-gallery-thumb { flex: none; width: auto !important; padding: 0 !important; margin: 0 !important; float: none !important; position: relative !important; left: auto !important; top: auto !important; transform-origin: 50% 50%; will-change: transform, opacity; }
+#ed-1443864586 .ed-gallery-thumb img { display: block; height: min(62vh, 580px); width: auto; max-width: none; object-fit: cover; }
+@media screen and (max-width: 767px) { #ed-1443864586 .ed-gallery-thumb img { height: 52vh; } #gallery-1.gallery-stage { gap: 20px; } }
+
+@media (prefers-reduced-motion: reduce) {
+	.sc-split__i { transform: none !important; }
+	[data-sc-reveal] { clip-path: none !important; }
+	.sc-on [data-sc-in], .sc-on [data-sc-stagger] > * { transform: none; transition-duration: 220ms; }
+	#ed-1443864589 .sculpt-banner-content, #ed-1443864613 > .inner { transform: none; }
+}
 </style>
 </head>
 <body class="page-22534654 pagelayout-1 index slogan culture-en"><a href="#main-content" class="wv-link-content button">Skip to main content</a>
+<div class="scroll-progress" data-sc-progress aria-hidden="true"></div>
 
-<div class="ed-element ed-container banner preset-banner-v3-home-hero-logo-nav-h1 parallax animation-initial" id="ed-1443864589" data-animation="{&quot;type&quot;:&quot;fade&quot;,&quot;initial&quot;:&quot;hide&quot;,&quot;keepHeight&quot;:true,&quot;duration&quot;:&quot;.5s&quot;,&quot;delay&quot;:&quot;0s&quot;,&quot;overlay&quot;:{&quot;width&quot;:&quot;auto&quot;},&quot;trigger&quot;:&quot;scroll&quot;,&quot;group&quot;:{&quot;name&quot;:&quot;&quot;,&quot;behavior&quot;:{&quot;show&quot;:&quot;&quot;,&quot;hide&quot;:&quot;&quot;}},&quot;closeText&quot;:&quot;&quot;}">
+<div class="ed-element ed-container banner preset-banner-v3-home-hero-logo-nav-h1 parallax animation-initial" id="ed-1443864589" data-animation="{&quot;type&quot;:&quot;fade&quot;,&quot;initial&quot;:&quot;hide&quot;,&quot;keepHeight&quot;:true,&quot;duration&quot;:&quot;.5s&quot;,&quot;delay&quot;:&quot;0s&quot;,&quot;overlay&quot;:{&quot;width&quot;:&quot;auto&quot;},&quot;trigger&quot;:&quot;scroll&quot;,&quot;group&quot;:{&quot;name&quot;:&quot;&quot;,&quot;behavior&quot;:{&quot;show&quot;:&quot;&quot;,&quot;hide&quot;:&quot;&quot;}},&quot;closeText&quot;:&quot;&quot;}" data-sc-act="flow">
 <div class="background">
 <div class="ed-element ed-html wv-bg" id="ed-2486900427">
 
@@ -218,7 +266,7 @@ figure{margin:0}
 
   </div>
 </div></div></div>
-<div class="overlay" style="background-color: rgba(0, 0, 0, 0.3);"></div>
+<div class="overlay"></div>
 <header class="inner" data-parallax-amount="50" id="home-3">
 <div class="ed-element ed-container flex-align-items-center wv-boxed menu-wrapper wv-overflow_visible preset-menu-v2-home-hero-logo-nav-h1-slogan-menu" id="ed-1443864595">
 <div class="inner">
@@ -234,31 +282,31 @@ figure{margin:0}
 <div class="ed-element ed-separator" id="ed-1444913477"><hr class="bg-primary"></div>
 <div class="ed-element ed-spacer" id="ed-1443864619"><div style="height: 16px;" class="space"></div></div>
 <figure class="ed-element ed-icon banner-arrow" id="ed-1443864622"><a href="#!next" class="wv-link-elm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -288 320 170" data-icon="ion-ion-ios-arrow-down" preserveAspectRatio="xMidYMid"><path d="M301 -288l19 21l-160 171l-160 -171l19 -21l141 150z"></path></svg></a></figure></div></div></header></div>
-<div class="ed-element ed-container wv-boxed wv-spacer preset-text-with-image-v4-about-image-text animation-initial" id="ed-1443864172" data-animation="{&quot;type&quot;:&quot;move-bottom-to-top&quot;,&quot;initial&quot;:&quot;hide&quot;,&quot;keepHeight&quot;:true,&quot;duration&quot;:&quot;5s&quot;,&quot;delay&quot;:&quot;0s&quot;,&quot;overlay&quot;:{&quot;width&quot;:&quot;auto&quot;},&quot;trigger&quot;:&quot;scroll&quot;,&quot;group&quot;:{&quot;name&quot;:&quot;&quot;,&quot;behavior&quot;:{&quot;show&quot;:&quot;&quot;,&quot;hide&quot;:&quot;&quot;}},&quot;closeText&quot;:&quot;&quot;}">
+<div class="ed-element ed-container wv-boxed wv-spacer preset-text-with-image-v4-about-image-text" id="ed-1443864172" data-sc-act="flow">
 <div class="inner" id="about-1">
 <div class="ed-element ed-container text-with-image-image wv-overflow_hidden full-width" id="ed-1443864178">
 <div class="background">
-<figure class="ed-element ed-image wv-bg" id="ed-1443864184">
-<div class="background-image-holder" style="background-image: url(&quot;images/about.webp&quot;);"></div></figure></div>
+<figure class="ed-element ed-image wv-bg" id="ed-1443864184" data-sc-reveal="up" data-sc-reveal-at="0.1 0.42">
+<div class="background-image-holder" data-sc-parallax="-0.8" style="background-image: url(&quot;images/about.webp&quot;);"></div></figure></div>
 <div class="inner" data-parallax-amount="0">&nbsp;</div></div>
 <div class="ed-element ed-container text-with-image-box wv-overflow_visible" id="ed-1443864187">
 <div class="inner">
-<div class="ed-element ed-headline custom-theme" id="ed-1443864190"><h2>Welcome to Sculpt Gym</h2></div>
+<div class="ed-element ed-headline custom-theme" id="ed-1443864190"><h2 data-sc-cue="0.134 4.134 0.0215 0" data-sc-kinetic="words">Welcome to Sculpt Gym</h2></div>
 <div class="ed-element ed-spacer" id="ed-1443864193"><div class="space"></div></div>
-<div class="ed-element ed-text custom-theme" id="ed-1443864199"><p>Fitness is about consistency, effort, and making progress that lasts.</p><p><br></p><p>Train in a clean, well-equipped space with experienced trainers who focus on proper technique, real results, and long-term health. Whether you are aiming to lose weight, build strength, or improve overall fitness, you will have the guidance and support needed to stay on track.</p><p><br></p><p>This is a place for focused training, steady improvement, and becoming stronger every day.</p></div>
+<div class="ed-element ed-text custom-theme" id="ed-1443864199" data-sc-in><p>Fitness is about consistency, effort, and making progress that lasts.</p><p><br></p><p>Train in a clean, well-equipped space with experienced trainers who focus on proper technique, real results, and long-term health. Whether you are aiming to lose weight, build strength, or improve overall fitness, you will have the guidance and support needed to stay on track.</p><p><br></p><p>This is a place for focused training, steady improvement, and becoming stronger every day.</p></div>
 <div class="ed-element ed-spacer" id="ed-1443864202"><div class="space"></div></div>
-<div class="ed-element ed-button custom-theme" id="ed-1443864205"><a href="#ed-1445688595" class="button center wv-link-elm">JOIN</a></div></div></div></div></div>
+<div class="ed-element ed-button custom-theme" id="ed-1443864205" data-sc-in><a href="#ed-1445688595" class="button center wv-link-elm">JOIN</a></div></div></div></div></div>
 <div class="ed-element ed-separator" id="ed-1445688586"><hr class="bg-primary"></div>
-<div class="ed-element ed-container wv-boxed wv-spacer animation-initial" id="ed-1443864208" data-animation="{&quot;type&quot;:&quot;move-bottom-to-top&quot;,&quot;initial&quot;:&quot;hide&quot;,&quot;keepHeight&quot;:true,&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;0s&quot;,&quot;overlay&quot;:{&quot;width&quot;:&quot;auto&quot;},&quot;trigger&quot;:&quot;scroll&quot;,&quot;group&quot;:{&quot;name&quot;:&quot;&quot;,&quot;behavior&quot;:{&quot;show&quot;:&quot;&quot;,&quot;hide&quot;:&quot;&quot;}},&quot;closeText&quot;:&quot;&quot;}">
+<div class="ed-element ed-container wv-boxed wv-spacer" id="ed-1443864208" data-sc-act="flow">
 <div class="inner" id="services-2">
-<div class="ed-element ed-headline custom-theme" id="ed-1443864211"><h2 class="center">Our Services</h2></div>
+<div class="ed-element ed-headline custom-theme" id="ed-1443864211"><h2 class="center" data-sc-cue="0.075 4.075 0.0213 0" data-sc-kinetic="words">Our Services</h2></div>
 <div class="ed-element ed-spacer" id="ed-1443864214"><div class="space"></div></div>
-<div class="ed-element ed-container wv-boxed wv-spacer wv-overflow_hidden preset-boxes-v3-services2 animation-initial" id="ed-1443864217" data-animation="{&quot;type&quot;:&quot;move-bottom-to-top&quot;,&quot;initial&quot;:&quot;hide&quot;,&quot;keepHeight&quot;:true,&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;0s&quot;,&quot;overlay&quot;:{&quot;width&quot;:&quot;auto&quot;},&quot;trigger&quot;:&quot;scroll&quot;,&quot;group&quot;:{&quot;name&quot;:&quot;&quot;,&quot;behavior&quot;:{&quot;show&quot;:&quot;&quot;,&quot;hide&quot;:&quot;&quot;}},&quot;closeText&quot;:&quot;&quot;}">
-<div class="inner">
+<div class="ed-element ed-container wv-boxed wv-spacer wv-overflow_hidden preset-boxes-v3-services2" id="ed-1443864217">
+<div class="inner" data-sc-in data-sc-stagger="110">
 <div class="ed-element ed-container boxes-box wv-overflow_visible" id="ed-1443864223">
 <div class="inner">
 <figure class="ed-element ed-icon boxes-icon" id="ed-1443864229"><svg xmlns="http://www.w3.org/2000/svg" viewBox="75 -850 848 1000" data-icon="ico-gym" role="img" preserveAspectRatio="xMidYMid" style="overflow: hidden;"><path d="M493.3 -628.3c46.1 -0 83.5 -37.5 83.5 -83.5 0 -46.1 -37.4 -83.5 -83.5 -83.5 -46 -0 -83.4 37.4 -83.4 83.5 0 46 37.4 83.5 83.4 83.5zM75.5 -644.2l64.2 63 19 -19.3 -64.2 -63 -19 19.3zM336.9 -787l-64.3 -63 -19 19.3 64.2 63.1 19.1 -19.4zm318.4 8.7l63.1 -64.2 19.3 19 -63.1 64.2 -19.3 -19zm225.8 90.6l-26 26.6 -46.8 -46c0.6 -9.8 -2.6 -19.9 -10.1 -27.4 -7.6 -7.6 -17.9 -10.8 -27.9 -9.9L738 -776.1l23.6 -24 -19.4 -19 -63 64.2 19.4 19 28.6 -29.1 26.7 26.2c-1.9 1.3 -3.7 2.7 -5.4 4.3 -0.2 0.3 -132 133.1 -132 133.1H360.4L230.7 -732l37.2 -37.9 26.6 26.1 19 -19.3 -64.2 -63 -19 19.3 26.5 26.1 -38.7 39.4c-13 -6 -28.8 -3.8 -39.6 6.9 -10.9 10.9 -13 27.1 -6.7 40.2l-29.9 30.5 -24 -23.6 -19 19.4 64.2 63 19 -19.3L153 -652.8l28.4 -28.9L382.5 -475.2l-0.3 577.6c0 26.3 21.3 47.6 47.6 47.6 26.2 -0 47.6 -21.3 47.6 -47.6v-386h21.3v386.4c0.6 26.2 21.7 47.2 47.6 47.2 26.2 -0 47.3 -21.3 47.3 -47.4l-0.1 -577 204.4 -210c2.1 -2.1 3.6 -4.1 5 -6.2l41.2 40.5L818 -623.5l19.4 19 63 -64.2 -19.3 -19zm-287.6 194v-3c0.7 -0.2 0 3 0 3zm248.3 -106.4l63.1 -64.2 19.3 19 -63.1 64.2 -19.3 -19z"></path></svg></figure>
-<div class="ed-element ed-container boxes-box-inner" id="ed-1443864235">
+<div class="ed-element ed-container boxes-box-inner" id="ed-1443864235" data-sc-tilt="7">
 <div class="inner">
 <div class="ed-element ed-spacer" id="ed-1443864241"><div class="space"></div></div>
 <div class="ed-element ed-headline custom-theme" id="ed-1443864247"><h3>Personal Training</h3></div>
@@ -267,7 +315,7 @@ figure{margin:0}
 <div class="ed-element ed-container boxes-box wv-overflow_visible" id="ed-1443864268">
 <div class="inner">
 <figure class="ed-element ed-icon boxes-icon" id="ed-1443864274"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-icon="fa-duotone-people-carry-box" role="img" preserveAspectRatio="xMidYMid" style="overflow: hidden;"><defs></defs><path class="fa-secondary" d="M248.6 319.2c-2.4-.6-4.7-1.4-7-2.5l-.6-.3c2.4 1.2 4.9 2.2 7.5 2.8zm134.7 .8H256.6c11.5-.2 22.5-6.7 28-17.7c7.9-15.8 1.5-35-14.3-42.9L224 236.2V160c0-17.7 14.3-32 32-32H384c17.7 0 32 14.3 32 32v76.2l-46.3 23.2c-15.8 7.9-22.2 27.1-14.3 42.9c5.5 11 16.5 17.4 28 17.7zm8.5-1c2.5-.6 4.8-1.5 7-2.7l-.5 .3c-2.1 1.1-4.3 1.9-6.5 2.4z"></path><path class="fa-primary" d="M176 48A48 48 0 1 0 80 48a48 48 0 1 0 96 0zM144 306.7V241.7l19 28.5c4.6 7 11 12.6 18.5 16.3l60.2 30.1c15.8 7.9 35 1.5 42.9-14.3s1.5-35-14.3-42.9l-56.4-28.2L166.5 160c-13.3-20-35.8-32-59.9-32C74.2 128 48 154.2 48 186.6v88.1c0 17 6.7 33.3 18.7 45.3l79.4 79.4 14.3 85.9c2.9 17.4 19.4 29.2 36.8 26.3s29.2-19.4 26.3-36.8l-15.2-90.9c-1.6-9.9-6.3-19-13.4-26.1l-51-51zM2.3 468.1c-6.6 16.4 1.4 35 17.8 41.6s35-1.4 41.6-17.8l37.6-94L50.1 348.6 2.3 468.1zM464 48a48 48 0 1 0 96 0 48 48 0 1 0 -96 0zm32 258.7l-51 51c-7.1 7.1-11.8 16.2-13.4 26.1l-15.2 90.9c-2.9 17.4 8.9 33.9 26.3 36.8s33.9-8.9 36.8-26.3l14.3-85.9L573.3 320c12-12 18.7-28.3 18.7-45.3V186.6c0-32.4-26.2-58.6-58.6-58.6c-24.1 0-46.5 12-59.9 32l-47.4 71.1-56.4 28.2c-15.8 7.9-22.2 27.1-14.3 42.9s27.1 22.2 42.9 14.3l60.2-30.1c7.5-3.7 13.8-9.4 18.5-16.3l19-28.5v65.1zM637.7 468.1L589.9 348.6l-49.2 49.2 37.6 94c6.6 16.4 25.2 24.4 41.6 17.8s24.4-25.2 17.8-41.6z"></path></svg></figure>
-<div class="ed-element ed-container boxes-box-inner" id="ed-1443864280">
+<div class="ed-element ed-container boxes-box-inner" id="ed-1443864280" data-sc-tilt="7">
 <div class="inner">
 <div class="ed-element ed-spacer" id="ed-1443864286"><div class="space"></div></div>
 <div class="ed-element ed-headline custom-theme" id="ed-1443864292"><h3>Guided Group Sessions</h3></div>
@@ -276,7 +324,7 @@ figure{margin:0}
 <div class="ed-element ed-container boxes-box wv-overflow_visible" id="ed-1443864310">
 <div class="inner">
 <figure class="ed-element ed-icon boxes-icon" id="ed-1443864316"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-icon="fa-sharp-solid-flower-daffodil" role="img" preserveAspectRatio="xMidYMid" style="overflow: hidden;"><path d="M288 281.3c9.8 4.3 20.6 6.7 32 6.7c44.2 0 80 -35.8 80 -80c0 -26.2 -12.6 -49.4 -32 -64c19.4 -14.6 32 -37.8 32 -64c0 -44.2 -35.8 -80 -80 -80c-26.2 0 -49.4 12.6 -64 32C241.4 12.6 218.2 0 192 0c-44.2 0 -80 35.8 -80 80c0 26.2 12.6 49.4 32 64c-19.4 14.6 -32 37.8 -32 64c0 44.2 35.8 80 80 80c11.4 0 22.2 -2.4 32 -6.7V394.8C192.1 349.5 139.5 320 80 320H0v16c0 97.2 78.8 176 176 176h48 32 32 48c97.2 0 176 -78.8 176 -176V320H432c-59.5 0 -112.1 29.5 -144 74.8V281.3zM200 144l56 -56 56 56 -56 56 -56 -56z"></path></svg></figure>
-<div class="ed-element ed-container boxes-box-inner" id="ed-1443864319">
+<div class="ed-element ed-container boxes-box-inner" id="ed-1443864319" data-sc-tilt="7">
 <div class="inner">
 <div class="ed-element ed-spacer" id="ed-1443864322"><div class="space"></div></div>
 <div class="ed-element ed-headline custom-theme" id="ed-1443864325"><h3>Beginner-Friendly Programs</h3></div>
@@ -289,14 +337,14 @@ figure{margin:0}
 <span class="salon-teaser-cta">Visit the salon <span aria-hidden="true">&rarr;</span></span>
 </a></div></div>
 <div class="ed-element ed-separator" id="ed-1445688589"><hr class="bg-primary"></div>
-<div class="ed-element ed-container wv-boxed wv-spacer flex-align-content-space-around flex-align-items-start flex-align-content-start preset-pricing-table-v3-default animation-initial" id="ed-1444454327" data-animation="{&quot;type&quot;:&quot;move-bottom-to-top&quot;,&quot;initial&quot;:&quot;hide&quot;,&quot;keepHeight&quot;:true,&quot;duration&quot;:&quot;5s&quot;,&quot;delay&quot;:&quot;0s&quot;,&quot;overlay&quot;:{&quot;width&quot;:&quot;auto&quot;},&quot;trigger&quot;:&quot;scroll&quot;,&quot;group&quot;:{&quot;name&quot;:&quot;&quot;,&quot;behavior&quot;:{&quot;show&quot;:&quot;&quot;,&quot;hide&quot;:&quot;&quot;}},&quot;closeText&quot;:&quot;&quot;}">
+<div class="ed-element ed-container wv-boxed wv-spacer flex-align-content-space-around flex-align-items-start flex-align-content-start preset-pricing-table-v3-default" id="ed-1444454327" data-sc-act="flow">
 <div class="inner">
-<div class="ed-element ed-headline custom-theme" id="ed-1444743309"><h2>Membership</h2></div>
+<div class="ed-element ed-headline custom-theme" id="ed-1444743309"><h2 data-sc-cue="0.084 4.084 0.0238 0" data-sc-kinetic="words">Membership</h2></div>
 <div class="ed-element ed-container pricing-table-box wv-overflow_visible" id="ed-1444454330">
 <div class="inner">
-<div class="ed-element ed-text custom-theme wv-overflow_hidden" id="ed-1444454333"><table style="margin-right: calc(0%); width: 100%;"><tbody><tr><td><span style="color: rgb(255, 210, 0);">MONTHLY SUBS</span><br>Without Personal Trainer</td><td>$ 50<br></td></tr><tr><td><strong>MONTHLY SUBS</strong><br>With Personal Trainer</td><td>$ 100</td></tr><tr><td><strong>DAILY PASS</strong><br>Without Personal Trainer</td><td>$ 5</td></tr><tr><td><strong>DAILY PASS</strong><br>With Personal Trainer</td><td>$ 10</td></tr><tr><td><br></td><td><br></td></tr></tbody></table></div></div></div>
-<div class="ed-element ed-container wv-boxed wv-spacer preset-opening-hours-v3-default wv-overflow_hidden animation-initial" id="ed-1444703766" data-animation="{&quot;type&quot;:&quot;move-bottom-to-top&quot;,&quot;initial&quot;:&quot;hide&quot;,&quot;keepHeight&quot;:true,&quot;duration&quot;:&quot;.5s&quot;,&quot;delay&quot;:&quot;0s&quot;,&quot;overlay&quot;:{&quot;width&quot;:&quot;auto&quot;},&quot;trigger&quot;:&quot;scroll&quot;,&quot;group&quot;:{&quot;name&quot;:&quot;&quot;,&quot;behavior&quot;:{&quot;show&quot;:&quot;&quot;,&quot;hide&quot;:&quot;&quot;}},&quot;closeText&quot;:&quot;&quot;}">
-<div class="inner">
+<div class="ed-element ed-text custom-theme wv-overflow_hidden" id="ed-1444454333"><table style="margin-right: calc(0%); width: 100%;"><tbody data-sc-in data-sc-stagger="80"><tr><td><span style="color: rgb(255, 210, 0);">MONTHLY SUBS</span><br>Without Personal Trainer</td><td>$ <span data-sc-count="0 50" data-sc-count-at="0.16 0.4">50</span><br></td></tr><tr><td><strong>MONTHLY SUBS</strong><br>With Personal Trainer</td><td>$ <span data-sc-count="0 100" data-sc-count-at="0.16 0.4">100</span></td></tr><tr><td><strong>DAILY PASS</strong><br>Without Personal Trainer</td><td>$ <span data-sc-count="0 5" data-sc-count-at="0.16 0.4">5</span></td></tr><tr><td><strong>DAILY PASS</strong><br>With Personal Trainer</td><td>$ <span data-sc-count="0 10" data-sc-count-at="0.16 0.4">10</span></td></tr><tr><td><br></td><td><br></td></tr></tbody></table></div></div></div>
+<div class="ed-element ed-container wv-boxed wv-spacer preset-opening-hours-v3-default wv-overflow_hidden" id="ed-1444703766">
+<div class="inner" data-sc-in data-sc-stagger="70">
 <figure class="ed-element ed-icon opening-hours-clock" id="ed-1444703769"><svg xmlns="http://www.w3.org/2000/svg" viewBox="62 -787 875 875" data-icon="ico-wall-clock" preserveAspectRatio="xMidYMid"><path d="M62.5 -351.7C62.3 -108.8 258.9 87.7 501.8 87.5c239.3 -0.2 435.7 -197.7 435.7 -438.2 0 -240.7 -196.8 -437 -438 -436.8C260 -787.3 62.6 -590.6 62.5 -351.7zm824.8 2.8C886.9 -136 712.7 37.6 499.6 37.3c-213.7 -0.3 -387.1 -174.2 -386.9 -388 0.2 -212.4 176.1 -387.3 389.1 -386.6 212.7 0.7 385.9 175.2 385.5 388.4zm-432.8 -16.6c-1 3.7 -1.6 7.5 -1.6 11.5 -0.3 25.7 19.8 46.1 45.6 46 15.5 -0 29.3 -7.7 37.8 -19.4 2.1 -2.9 3.7 -5.5 4.1 -5.5h0.7c94.2 0.2 188.5 0.1 282.7 0.1h8c3.5 -0 6.4 -2.9 6.4 -6.4v-20.2c0 -3.5 -2.9 -6.4 -6.4 -6.4h-7.4c-93.5 -0 -186.9 -0 -280.4 0.1h-0.3c-0.1 -0 -1 -2.8 -2.4 -6.1 -7.1 -16.3 -23.4 -28 -42 -28.1 -4.2 -0 -8.3 0.6 -12.2 1.7 -3.4 1 -8.1 0.2 -10.7 -2.3 -34 -33 -67.9 -66.1 -101.5 -99.4 -11 -10.9 -21.4 -22.5 -31.9 -33.9 -2.4 -2.6 -6.4 -2.7 -8.9 -0.2 -6 6 -11.1 11.1 -16.4 16.3 -2.5 2.5 -2.5 6.6 0 9 45.3 44.5 90 88.4 134.5 132.6 2.3 2.5 3.2 7.1 2.3 10.6zM477.3 -39.9c-0.2 12.1 9.3 21.6 21.4 21.6 11.9 -0 21.7 -9.7 21.8 -21.4 0.1 -11.7 -9.8 -21.7 -21.5 -21.7 -11.8 -0 -21.5 9.7 -21.7 21.5zm154.3 -579.2c-0.1 12.4 9 21.7 21.2 21.7 12 -0 21.9 -9.4 22.2 -21.1 0.3 -11.3 -9.8 -21.6 -21.6 -22 -11.9 -0.3 -21.7 9.4 -21.8 21.4zm-150.8 -39.6c0.2 11.9 9.9 21.4 21.8 21.2 11.9 -0.2 21.4 -9.9 21.2 -21.8 -0.2 -11.9 -10 -21.4 -21.8 -21.2 -12 0.2 -21.4 9.9 -21.2 21.8zM252.5 -503c-0.1 -12.2 -9.8 -21.9 -21.6 -21.5 -11.3 0.4 -21.1 10.1 -21.3 21.2 -0.2 11.9 9.4 21.6 21.5 21.7 12.3 0.1 21.5 -9.1 21.4 -21.4zM368.4 -80.8c-0.3 -11.7 -9.6 -21.1 -20.9 -21.2 -11.4 -0.1 -22 10.4 -21.9 21.8 0.1 12.1 9.7 21.4 21.9 21.2 12.3 -0.1 21.2 -9.4 20.9 -21.8zm377.4 -422.7c0.2 11 10.2 21.1 21.3 21.4 11.5 0.3 21.7 -9.8 22 -21.6 0.3 -11.7 -9.5 -21.4 -21.7 -21.4 -12.1 -0.1 -21.8 9.6 -21.6 21.6zm2.4 307.6c0.2 11.7 9.3 20.9 20.9 21.1 12.3 0.2 21.8 -8.9 21.9 -21 0.1 -12.2 -9.4 -22.1 -21.1 -22.1 -11.4 0.1 -21.9 10.6 -21.7 22zM212.5 -351.5c-0.2 -11.7 -10.1 -21.3 -21.9 -21.2 -11.9 0.1 -21.4 10 -21.1 21.8 0.3 11.9 10.1 21.5 21.8 21.3 11.7 -0.2 21.4 -10.2 21.2 -21.9zm41.6 156.9c0.5 -11.7 -9.3 -21.6 -21.5 -21.6 -12.1 -0.1 -21.4 9.3 -21.3 21.6 0 12.1 9.8 21.8 21.7 21.5 10.5 -0.2 20.7 -10.6 21.1 -21.5zm113.6 -422.8c0.2 -11.5 -9.8 -21.4 -21.9 -21.4 -12 -0 -21.2 9.6 -21 21.9 0.2 11.7 9.2 20.8 20.9 21.2 11.3 0.3 21.8 -10 22 -21.7zM633.8 -80.7C634 -69 643 -59.8 654.7 -59.5c11.3 0.3 21.8 -10 22 -21.7 0.2 -12 -9.5 -21.4 -21.8 -21.4C642.8 -102.5 633.7 -93 633.8 -80.7z"></path></svg></figure>
 <div class="ed-element ed-text opening-hours-box custom-theme" id="ed-1444703772"><p><strong>Monday</strong></p><p>05:30 - 19:00</p></div>
 <div class="ed-element ed-text opening-hours-box custom-theme" id="ed-1444703775"><p><strong>Tuesday</strong></p><p>05:30 - 19:00</p></div>
@@ -306,28 +354,28 @@ figure{margin:0}
 <div class="ed-element ed-text opening-hours-box custom-theme" id="ed-1444703787"><p><strong>Saturday</strong></p><p>07:00 - 10:00</p></div>
 <div class="ed-element ed-text opening-hours-box custom-theme" id="ed-1444703790"><p><strong>Sunday</strong></p><p>Closed</p></div></div></div></div></div>
 <div class="ed-element ed-separator" id="ed-1445688592"><hr class="bg-primary"></div>
-<div class="ed-element ed-container wv-boxed wv-spacer wv-overflow_visible full-width preset-text-v2-cta-1 bg-primary animation-initial" style="background-size: auto;" id="ed-1443864703" data-animation="{&quot;type&quot;:&quot;move-bottom-to-top&quot;,&quot;initial&quot;:&quot;hide&quot;,&quot;keepHeight&quot;:true,&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;0s&quot;,&quot;overlay&quot;:{&quot;width&quot;:&quot;auto&quot;},&quot;trigger&quot;:&quot;scroll&quot;,&quot;group&quot;:{&quot;name&quot;:&quot;&quot;,&quot;behavior&quot;:{&quot;show&quot;:&quot;&quot;,&quot;hide&quot;:&quot;&quot;}},&quot;closeText&quot;:&quot;&quot;}">
+<div class="ed-element ed-container wv-boxed wv-spacer wv-overflow_visible full-width preset-text-v2-cta-1 bg-primary" style="background-size: auto;" id="ed-1443864703" data-sc-act="flow">
 <div class="inner" id="cta-1">
-<div class="ed-element ed-headline custom-theme" id="ed-1443864706"><h2><span class="color-background">Ready to Start?</span></h2></div>
+<div class="ed-element ed-headline custom-theme" id="ed-1443864706"><h2><span class="color-background" data-sc-cue="0.134 4.134 0.0370 0" data-sc-kinetic="words">Ready to Start?</span></h2></div>
 <div class="ed-element ed-spacer" id="ed-1443864709"><div class="space"></div></div>
-<div class="ed-element ed-text custom-theme text" id="ed-1443864712"><p style="text-align: center;"><span class="color-background">Your Fitness Journey Begins Here!</span></p></div>
+<div class="ed-element ed-text custom-theme text" id="ed-1443864712" data-sc-in><p style="text-align: center;"><span class="color-background">Your Fitness Journey Begins Here!</span></p></div>
 <div class="ed-element ed-spacer" id="ed-1443864715"><div class="space"></div></div>
-<div class="ed-element ed-button custom-theme animation-initial" style="opacity: 1;" id="ed-1443864718" data-animation="{&quot;type&quot;:&quot;flash&quot;,&quot;initial&quot;:&quot;hide&quot;,&quot;keepHeight&quot;:true,&quot;duration&quot;:&quot;1.5s&quot;,&quot;delay&quot;:&quot;0s&quot;,&quot;overlay&quot;:{&quot;width&quot;:&quot;auto&quot;},&quot;trigger&quot;:&quot;scroll&quot;,&quot;group&quot;:{&quot;name&quot;:&quot;&quot;,&quot;behavior&quot;:{&quot;show&quot;:&quot;&quot;,&quot;hide&quot;:&quot;&quot;}},&quot;closeText&quot;:&quot;&quot;}"><a href="#ed-1445688595" class="button center wv-link-elm">Join Now</a></div></div></div>
-<div class="ed-element ed-container wv-boxed wv-spacer preset-image-slider-3-images-default animation-initial" id="ed-1444356194" data-animation="{&quot;type&quot;:&quot;move-bottom-to-top&quot;,&quot;initial&quot;:&quot;hide&quot;,&quot;keepHeight&quot;:true,&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;0s&quot;,&quot;overlay&quot;:{&quot;width&quot;:&quot;auto&quot;},&quot;trigger&quot;:&quot;scroll&quot;,&quot;group&quot;:{&quot;name&quot;:&quot;&quot;,&quot;behavior&quot;:{&quot;show&quot;:&quot;&quot;,&quot;hide&quot;:&quot;&quot;}},&quot;closeText&quot;:&quot;&quot;}">
+<div class="ed-element ed-button custom-theme" id="ed-1443864718" data-sc-in><a href="#ed-1445688595" class="button center wv-link-elm" data-sc-magnet="0.25">Join Now</a></div></div></div>
+<div class="ed-element ed-container wv-boxed wv-spacer preset-image-slider-3-images-default" id="ed-1444356194" data-sc-act="flow">
 <div class="inner" role="region" aria-label="Image Slider">
-<div class="ed-element ed-headline custom-theme" id="ed-1444410436"><h2 class="center">Meet the Team</h2></div>
+<div class="ed-element ed-headline custom-theme" id="ed-1444410436"><h2 class="center" data-sc-cue="0.112 4.112 0.0295 0" data-sc-kinetic="words">Meet the Team</h2></div>
 <div class="ed-element ed-spacer" id="ed-1508917400"><div class="space"></div></div>
-<div class="ed-element ed-slider animation-initial" id="ed-1444356197" data-animation="{&quot;type&quot;:&quot;move-bottom-to-top&quot;,&quot;initial&quot;:&quot;hide&quot;,&quot;keepHeight&quot;:true,&quot;duration&quot;:&quot;.5s&quot;,&quot;delay&quot;:&quot;0s&quot;,&quot;overlay&quot;:{&quot;width&quot;:&quot;auto&quot;},&quot;trigger&quot;:&quot;scroll&quot;,&quot;group&quot;:{&quot;name&quot;:&quot;&quot;,&quot;behavior&quot;:{&quot;show&quot;:&quot;&quot;,&quot;hide&quot;:&quot;&quot;}},&quot;closeText&quot;:&quot;&quot;}"><div class="slider-container" data-parameters="{&quot;adaptiveHeight&quot;: true, &quot;slidesToShow&quot;: 3, &quot;slidesToScroll&quot;: 1, &quot;rows&quot;: 1, &quot;slidesPerRow&quot;: 1, &quot;height&quot;: &quot;400px&quot;, &quot;animation&quot;: &quot;slide&quot;, &quot;animationSpeed&quot;: &quot;800ms&quot;, &quot;direction&quot;: &quot;horizontal&quot;, &quot;autoplay&quot;: true, &quot;autoplaySpeed&quot;: &quot;3s&quot;, &quot;pauseOnHover&quot;: false, &quot;loop&quot;: true, &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;enlarge&quot;: true, &quot;retinaImages&quot;: true, &quot;lazyLoad&quot;: &quot;ondemand&quot;, &quot;variableWidth&quot;: false, &quot;centerMode&quot;: false, &quot;centerPadding&quot;: &quot;0px&quot;, &quot;asNavFor&quot;: &quot;&quot;, &quot;insideContainer&quot;: true, &quot;responsive&quot;: [{&quot;breakpoint&quot;: 976, &quot;settings&quot;: {&quot;slidesToShow&quot;: 3, &quot;slidesToScroll&quot;: 3, &quot;centerPadding&quot;: &quot;0px&quot;}}, {&quot;breakpoint&quot;: 576, &quot;settings&quot;: {&quot;slidesToShow&quot;: 2, &quot;slidesToScroll&quot;: 1, &quot;centerPadding&quot;: &quot;0px&quot;}}]}" aria-roledescription="carousel">
+<div class="ed-element ed-slider" id="ed-1444356197" data-sc-in><div class="slider-container" data-parameters="{&quot;adaptiveHeight&quot;: true, &quot;slidesToShow&quot;: 3, &quot;slidesToScroll&quot;: 1, &quot;rows&quot;: 1, &quot;slidesPerRow&quot;: 1, &quot;height&quot;: &quot;400px&quot;, &quot;animation&quot;: &quot;slide&quot;, &quot;animationSpeed&quot;: &quot;800ms&quot;, &quot;direction&quot;: &quot;horizontal&quot;, &quot;autoplay&quot;: true, &quot;autoplaySpeed&quot;: &quot;3s&quot;, &quot;pauseOnHover&quot;: false, &quot;loop&quot;: true, &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;enlarge&quot;: true, &quot;retinaImages&quot;: true, &quot;lazyLoad&quot;: &quot;ondemand&quot;, &quot;variableWidth&quot;: false, &quot;centerMode&quot;: false, &quot;centerPadding&quot;: &quot;0px&quot;, &quot;asNavFor&quot;: &quot;&quot;, &quot;insideContainer&quot;: true, &quot;responsive&quot;: [{&quot;breakpoint&quot;: 976, &quot;settings&quot;: {&quot;slidesToShow&quot;: 3, &quot;slidesToScroll&quot;: 3, &quot;centerPadding&quot;: &quot;0px&quot;}}, {&quot;breakpoint&quot;: 576, &quot;settings&quot;: {&quot;slidesToShow&quot;: 2, &quot;slidesToScroll&quot;: 1, &quot;centerPadding&quot;: &quot;0px&quot;}}]}" aria-roledescription="carousel">
 <div class="ed-slider-item bg-cc"><a href="images/team-1-large.webp"><img data-lazy="images/team-1.jpg" alt=""></a></div>
 <div class="ed-slider-item bg-cc"><a href="images/team-2-large.webp"><img data-lazy="images/team-2.jpg" alt=""></a></div>
 <div class="ed-slider-item bg-cc"><a href="images/team-3-large.webp"><img data-lazy="images/team-3.jpg" alt=""></a></div>
 <div class="ed-slider-item bg-cc"><a href="images/team-4-large.webp"><img data-lazy="images/team-4.jpg" alt=""></a></div>
 <div class="ed-slider-item bg-cc"><a href="images/team-5-large.webp"><img data-lazy="images/team-5.jpg" alt=""></a></div></div></div></div></div>
-<div class="ed-element ed-container wv-boxed wv-spacer animation-initial" id="ed-1443864625" data-animation="{&quot;type&quot;:&quot;move-bottom-to-top&quot;,&quot;initial&quot;:&quot;hide&quot;,&quot;keepHeight&quot;:true,&quot;duration&quot;:&quot;3s&quot;,&quot;delay&quot;:&quot;0s&quot;,&quot;overlay&quot;:{&quot;width&quot;:&quot;auto&quot;},&quot;trigger&quot;:&quot;scroll&quot;,&quot;group&quot;:{&quot;name&quot;:&quot;&quot;,&quot;behavior&quot;:{&quot;show&quot;:&quot;&quot;,&quot;hide&quot;:&quot;&quot;}},&quot;closeText&quot;:&quot;&quot;}">
+<div class="ed-element ed-container wv-boxed wv-spacer" id="ed-1443864625" data-sc-act="flow">
 <div class="inner" id="testimonial-2">
-<div class="ed-element ed-headline custom-theme" id="ed-1443864628"><h2>Testimonials</h2></div>
+<div class="ed-element ed-headline custom-theme" id="ed-1443864628"><h2 data-sc-cue="0.110 4.110 0.0315 0" data-sc-kinetic="words">Testimonials</h2></div>
 <div class="ed-element ed-spacer" id="ed-1443864631"><div class="space"></div></div>
-<div class="ed-element ed-container wv-boxed wv-spacer wv-overflow_visible preset-slider-content-v3-testimonials-image-text" id="ed-1443864634">
+<div class="ed-element ed-container wv-boxed wv-spacer wv-overflow_visible preset-slider-content-v3-testimonials-image-text" id="ed-1443864634" data-sc-in>
 <div class="inner">
 <div class="ed-element ed-content-slider wv-overflow_visible" id="ed-1443864637"><div class="slider-container" data-parameters="{&quot;adaptiveHeight&quot;: true, &quot;slidesToShow&quot;: 1, &quot;slidesToScroll&quot;: 1, &quot;rows&quot;: 1, &quot;slidesPerRow&quot;: 1, &quot;height&quot;: &quot;500px&quot;, &quot;animation&quot;: &quot;slide&quot;, &quot;animationSpeed&quot;: &quot;800ms&quot;, &quot;direction&quot;: &quot;horizontal&quot;, &quot;autoplay&quot;: true, &quot;autoplaySpeed&quot;: &quot;5s&quot;, &quot;pauseOnHover&quot;: true, &quot;loop&quot;: true, &quot;nav&quot;: true, &quot;dots&quot;: false, &quot;enlarge&quot;: false, &quot;retinaImages&quot;: false, &quot;lazyLoad&quot;: &quot;progressive&quot;, &quot;variableWidth&quot;: false, &quot;centerMode&quot;: false, &quot;centerPadding&quot;: &quot;50px&quot;, &quot;asNavFor&quot;: &quot;&quot;, &quot;responsive&quot;: [{&quot;breakpoint&quot;: 976, &quot;settings&quot;: {&quot;slidesToShow&quot;: 1, &quot;slidesToScroll&quot;: 1}}, {&quot;breakpoint&quot;: 767, &quot;settings&quot;: {&quot;slidesToShow&quot;: 1, &quot;slidesToScroll&quot;: 1}}]}" aria-roledescription="carousel">
 <div class="ed-slider-item">
@@ -381,16 +429,17 @@ Join me at the gym for amazing results!
 💪 Keep pushing your limits! Join Sculpt Gym!  
   
 #SculptYourBody #GymLife #Community!</p></div></div></div></div></div></div></div></div>
-<div class="ed-element ed-container preset-gallery-v3-default wv-overflow_hidden bg-background full-width" style="background-size: auto;" id="ed-1443864583">
-<div class="inner" id="gallery-1">
-<div class="ed-element ed-gallery noshadow border-none animation-initial" id="ed-1443864586" data-animation="{&quot;type&quot;:&quot;move-bottom-to-top&quot;,&quot;initial&quot;:&quot;hide&quot;,&quot;keepHeight&quot;:true,&quot;duration&quot;:&quot;5s&quot;,&quot;delay&quot;:&quot;0s&quot;,&quot;overlay&quot;:{&quot;width&quot;:&quot;auto&quot;},&quot;trigger&quot;:&quot;scroll&quot;,&quot;group&quot;:{&quot;name&quot;:&quot;&quot;,&quot;behavior&quot;:{&quot;show&quot;:&quot;&quot;,&quot;hide&quot;:&quot;&quot;}},&quot;closeText&quot;:&quot;&quot;}">
-<ul class="ed-gallery-items v2" style="margin: 0px;"><li id="ed-gallery-item_21962653" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-01-large.webp" target="_blank" title=""><img loading="lazy" src="images/gallery-01.webp" alt=""></a></li><li id="ed-gallery-item_21962662" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-02-large.webp" target="_blank" title=""><img loading="lazy" src="images/gallery-02.webp" alt=""></a></li><li id="ed-gallery-item_21962666" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-03-large.webp" target="_blank" title=""><img loading="lazy" src="images/gallery-03.webp" alt=""></a></li><li id="ed-gallery-item_21962663" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-04-large.webp" target="_blank" title=""><img loading="lazy" src="images/gallery-04.webp" alt=""></a></li><li id="ed-gallery-item_21962660" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-05-large.webp" target="_blank" title=""><img loading="lazy" src="images/gallery-05.webp" alt=""></a></li><li id="ed-gallery-item_21962656" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-06-large.webp" target="_blank" title=""><img loading="lazy" src="images/gallery-06.webp" alt=""></a></li><li id="ed-gallery-item_21962636" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-07-large.webp" target="_blank" title=""><img loading="lazy" src="images/gallery-07.webp" alt=""></a></li><li id="ed-gallery-item_21962651" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-08-large.webp" target="_blank" title=""><img loading="lazy" src="images/gallery-08.webp" alt=""></a></li><li id="ed-gallery-item_21962644" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-09-large.webp" target="_blank" title=""><img loading="lazy" src="images/gallery-09.webp" alt=""></a></li><li id="ed-gallery-item_21962648" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-10-large.webp" target="_blank" title=""><img loading="lazy" src="images/gallery-10.webp" alt=""></a></li><li id="ed-gallery-item_21962642" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-11-large.webp" target="_blank" title=""><img loading="lazy" src="images/gallery-11.webp" alt=""></a></li></ul></div></div></div>
+<div class="ed-element ed-container preset-gallery-v3-default wv-overflow_hidden bg-background full-width" style="background-size: auto;" id="ed-1443864583" data-sc-act="pan" data-sc-span="3.4">
+<div class="inner gallery-stage" id="gallery-1" data-sc-stage>
+<div class="gallery-head"><p class="gallery-kicker">Inside the gym</p><h2>Sculpt Gym, Bulawayo</h2></div>
+<div class="ed-element ed-gallery noshadow border-none" id="ed-1443864586">
+<ul class="ed-gallery-items v2" style="margin: 0px;" data-sc-pan="0"><li id="ed-gallery-item_21962653" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-01-large.webp" target="_blank" title=""><img width="800" height="800" loading="lazy" src="images/gallery-01.webp" alt=""></a></li><li id="ed-gallery-item_21962662" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-02-large.webp" target="_blank" title=""><img width="800" height="1001" loading="lazy" src="images/gallery-02.webp" alt=""></a></li><li id="ed-gallery-item_21962666" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-03-large.webp" target="_blank" title=""><img width="800" height="1001" loading="lazy" src="images/gallery-03.webp" alt=""></a></li><li id="ed-gallery-item_21962663" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-04-large.webp" target="_blank" title=""><img width="800" height="1001" loading="lazy" src="images/gallery-04.webp" alt=""></a></li><li id="ed-gallery-item_21962660" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-05-large.webp" target="_blank" title=""><img width="800" height="1001" loading="lazy" src="images/gallery-05.webp" alt=""></a></li><li id="ed-gallery-item_21962656" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-06-large.webp" target="_blank" title=""><img width="800" height="1000" loading="lazy" src="images/gallery-06.webp" alt=""></a></li><li id="ed-gallery-item_21962636" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-07-large.webp" target="_blank" title=""><img width="800" height="1000" loading="lazy" src="images/gallery-07.webp" alt=""></a></li><li id="ed-gallery-item_21962651" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-08-large.webp" target="_blank" title=""><img width="800" height="800" loading="lazy" src="images/gallery-08.webp" alt=""></a></li><li id="ed-gallery-item_21962644" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-09-large.webp" target="_blank" title=""><img width="800" height="1000" loading="lazy" src="images/gallery-09.webp" alt=""></a></li><li id="ed-gallery-item_21962648" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-10-large.webp" target="_blank" title=""><img width="800" height="800" loading="lazy" src="images/gallery-10.webp" alt=""></a></li><li id="ed-gallery-item_21962642" class="ed-gallery-thumb" style="width: 800px; padding: 0px;"><a href="images/gallery-11-large.webp" target="_blank" title=""><img width="800" height="800" loading="lazy" src="images/gallery-11.webp" alt=""></a></li></ul></div></div></div>
 <div class="ed-element ed-separator" id="ed-1445688595"><hr class="bg-primary"></div>
-<div class="ed-element ed-container wv-boxed wv-spacer animation-initial" id="ed-1443864541" data-animation="{&quot;type&quot;:&quot;move-bottom-to-top&quot;,&quot;initial&quot;:&quot;hide&quot;,&quot;keepHeight&quot;:true,&quot;duration&quot;:&quot;3s&quot;,&quot;delay&quot;:&quot;0s&quot;,&quot;overlay&quot;:{&quot;width&quot;:&quot;auto&quot;},&quot;trigger&quot;:&quot;scroll&quot;,&quot;group&quot;:{&quot;name&quot;:&quot;&quot;,&quot;behavior&quot;:{&quot;show&quot;:&quot;&quot;,&quot;hide&quot;:&quot;&quot;}},&quot;closeText&quot;:&quot;&quot;}">
+<div class="ed-element ed-container wv-boxed wv-spacer" id="ed-1443864541" data-sc-act="flow">
 <div class="inner" id="contact-us-1">
-<div class="ed-element ed-headline custom-theme" id="ed-1443864547"><h2>Get in Touch!</h2></div>
+<div class="ed-element ed-headline custom-theme" id="ed-1443864547"><h2 data-sc-cue="0.101 4.101 0.0288 0" data-sc-kinetic="words">Get in Touch!</h2></div>
 <div class="ed-element ed-spacer" id="ed-1443864550"><div class="space"></div></div>
-<div class="ed-element ed-container wv-overflow_visible wv-spacer wv-boxed preset-contact-form-v3-default" id="ed-1443864553">
+<div class="ed-element ed-container wv-overflow_visible wv-spacer wv-boxed preset-contact-form-v3-default" id="ed-1443864553" data-sc-in>
 <div class="inner">
 <div class="ed-element ed-form-container" id="ed-1443864556"><form method="POST" action="https://formsubmit.co/info@sculptgym.co.zw"><input type="hidden" name="_subject" value="New message from the Sculpt Gym website"><input type="hidden" name="_template" value="table"><input type="hidden" name="_next" value="https://sculptgym.co.zw/#contact-us-1"><input type="text" name="_honey" style="display: none;" tabindex="-1" autocomplete="off">
 <div class="ed-element ed-form-input" id="ed-1443864562"><input placeholder="Name" required="required" type="text" name="Name" value="" id="form_1443864556_ed-f-1443864562"></div>
@@ -435,6 +484,33 @@ Join me at the gym for amazing results!
 <script src="vendor/slick-1.8.1.min.js"></script>
 <script src="vendor/jquery.magnific-popup-1.1.0.min.js"></script>
 <script src="js/light-trace.js"></script>
+<script src="js/scrollcraft.js"></script>
+<script>
+/* Start the scroll effects, then the gallery's turn: each photo rotates slightly and dims away from the centre. */
+var scroller = ScrollCraft.mount(document);
+/* Photos and sliders above a section change the page height as they load; re-measure so effects start at the right point. */
+if ('ResizeObserver' in window) new ResizeObserver(function () { scroller.layout(); }).observe(document.body);
+window.addEventListener('load', function () { scroller.layout(); });
+(function () {
+	if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+	var stage = document.getElementById('gallery-1');
+	var items = Array.prototype.slice.call(document.querySelectorAll('#ed-1443864586 .ed-gallery-thumb'));
+	if (!stage || !items.length) return;
+	var on = false;
+	var frame = function () {
+		if (!on) return;
+		var vw = window.innerWidth, centre = vw / 2;
+		for (var i = 0; i < items.length; i++) {
+			var r = items[i].getBoundingClientRect();
+			var k = Math.max(-1, Math.min(1, ((r.left + r.width / 2) - centre) / vw * 1.6));
+			items[i].style.transform = 'perspective(1200px) rotateY(' + (-k * 16).toFixed(2) + 'deg) scale(' + (1 - Math.abs(k) * 0.08).toFixed(3) + ')';
+			items[i].style.opacity = (1 - Math.abs(k) * 0.4).toFixed(3);
+		}
+		window.requestAnimationFrame(frame);
+	};
+	new IntersectionObserver(function (e) { var was = on; on = e[0].isIntersecting; if (on && !was) window.requestAnimationFrame(frame); }).observe(stage);
+})();
+</script>
 <script>
 /* Sculpt Gym site behaviour. Replaces the Sitejet runtime: animations, parallax, sliders, lightbox, map. */
 (function ($) {
