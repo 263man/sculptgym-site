@@ -33,7 +33,7 @@ Search for these ids or words to find each part.
 8. Meet the Team slider: `id="ed-1444356197"`. One `<div class="ed-slider-item bg-cc">` per trainer. To add a trainer, copy a line and point it at new image files.
 9. Testimonials: `id="testimonial-2"`. One `ed-slider-item` per testimonial.
 10. Gallery: `id="gallery-1"`. One `<li class="ed-gallery-thumb">` per photo.
-11. Contact form: `id="contact-us-1"`. Messages are sent by FormSubmit (formsubmit.co) to info@sculptgym.co.zw. The very first message triggers a confirmation email from FormSubmit that must be clicked once.
+11. Contact form: `id="contact-us-1"`. Messages are sent by FormSubmit (formsubmit.co) to info@sculptgym.co.zw. The very first message triggers a confirmation email from FormSubmit that must be clicked once. The grey hints inside the boxes ("Name", "Phone"...) were darkened to #6b6b6b at the owner's request so they read on the white boxes; the rule is in the page-specific `<style>` block.
 12. Footer: `id="footer-2"`: address, phone, email, menu and social links.
 13. Map: `ed-map`, a Google Maps embed.
 14. Copyright line: `<div class="site-copyright">` after the map. The year is not typed in: a small script before the libraries fills every `.js-year` with the visitor's current year, so it changes by itself on 1 January. The salon page's footer has the same.
