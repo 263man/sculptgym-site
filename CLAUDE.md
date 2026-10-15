@@ -57,7 +57,7 @@ The styles are in the "Scroll effects" part of the page-specific `<style>` block
 
 - Headings and text show in the browser's default serif font. The original asks for Roboto and Anton but its font file never loaded (Sitejet's font link returned an error), so visitors always saw the fallback. The copy keeps that. Loading the real fonts would be a one-line change, but it changes the look, so only do it if the owner asks.
 - "Legal Notice" and "Privacy Policy" link to pages that do not exist, as on the original.
-- The three testimonial portraits still load from images.pexels.com, as on the original. Download them into `images/` when possible. (All 15 banner photos are now stored in `images/`, `hero-01` to `hero-15`.)
+- Every photo is now stored in `images/`: the 15 banner photos (`hero-01` to `hero-15`) and the 3 testimonial portraits (`testimonial-1` to `-3`, stock photos from Pexels, as on the original).
 
 ## Custom domain
 
