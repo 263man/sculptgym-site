@@ -129,6 +129,7 @@ a { color: inherit; }
 .foot .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
 .foot a { color: #fff; text-decoration: none; }
 .foot a:hover { color: var(--lilac); }
+.foot .copyright { margin: 14px 0 0; text-align: center; font-size: 12px; letter-spacing: 0.16em; color: #8f97a6; }
 
 /* ---------- Light effects ----------
    1. The light travelling round the booking card is drawn by ../js/light-trace.js (settings: the data-light-* attributes on the card).
@@ -329,8 +330,13 @@ a { color: inherit; }
 		<a href="../">&larr; Back to Sculpt Gym</a>
 		<span>Wellness inside &amp; out</span>
 	</div>
+	<p class="copyright">&copy; <span class="js-year">2026</span> Sculpt Gym Salon</p>
 </footer>
 
 <script src="../js/light-trace.js"></script>
+<script>
+/* Current year for the copyright line, taken from the visitor's device each time the page loads. */
+document.querySelectorAll('.js-year').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+</script>
 </body>
 </html>

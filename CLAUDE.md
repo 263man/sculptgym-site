@@ -36,7 +36,8 @@ Search for these ids or words to find each part.
 11. Contact form: `id="contact-us-1"`. Messages are sent by FormSubmit (formsubmit.co) to info@sculptgym.co.zw. The very first message triggers a confirmation email from FormSubmit that must be clicked once.
 12. Footer: `id="footer-2"`: address, phone, email, menu and social links.
 13. Map: `ed-map`, a Google Maps embed.
-14. Scripts at the end: libraries from `vendor/`, then the site script (animations, parallax, sliders, lightbox), then Sitejet's menu script.
+14. Copyright line: `<div class="site-copyright">` after the map. The year is not typed in: a small script before the libraries fills every `.js-year` with the visitor's current year, so it changes by itself on 1 January. The salon page's footer has the same.
+15. Scripts at the end: libraries from `vendor/`, then the site script (animations, parallax, sliders, lightbox), then Sitejet's menu script.
 
 ## Scroll effects
 
@@ -61,7 +62,7 @@ The styles are in the "Scroll effects" part of the page-specific `<style>` block
 
 ## Custom domain
 
-The site is served from GitHub Pages. To put it on sculptgym.co.zw, enter it as the custom domain in the repository's Settings > Pages (with the GitHub Actions source no `CNAME` file is needed), then point the domain's DNS at GitHub Pages: A records for `@` to 185.199.108.153, 185.199.109.153, 185.199.110.153 and 185.199.111.153, and a CNAME record for `www` to `263man.github.io`. Then tick "Enforce HTTPS".
+The site is served from GitHub Pages. sculptgym.co.zw has been live on it with a Let's Encrypt certificate since 16 October 2026; GitHub renews it automatically. To put it on sculptgym.co.zw, enter it as the custom domain in the repository's Settings > Pages (with the GitHub Actions source no `CNAME` file is needed), then point the domain's DNS at GitHub Pages: A records for `@` to 185.199.108.153, 185.199.109.153, 185.199.110.153 and 185.199.111.153, and a CNAME record for `www` to `263man.github.io`. Then tick "Enforce HTTPS".
 
 ## Checking a change
 

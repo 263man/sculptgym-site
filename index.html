@@ -165,6 +165,8 @@ figure{margin:0}
 #testimonial-2 .ed-image picture { display: contents; }
 #ed-1444356197 .ed-slider-item picture { display: block; }
 #ed-1444356197 .ed-slider-item img { width: 100%; height: auto; }
+/* Copyright line at the very bottom of the page. */
+.site-copyright { padding: 18px 16px; background: #1a1a1a; color: #E5E5E5; font-size: 14px; text-align: center; }
 /* ================= Scroll effects =================
    Driven by js/scrollcraft.js (the scrollcraft engine, MIT licence). Sections marked data-sc-act publish their
    scroll progress as --sc-p (0 to 1); data-sc-cue fades content in, data-sc-kinetic builds a heading word by word,
@@ -488,6 +490,8 @@ Join me at the gym for amazing results!
 <figure class="ed-element ed-icon" id="ed-1443864529"><a href="https://www.instagram.com/sculptgymbyo/?hl=en" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -384 384 384" data-icon="ion-social-instagram" preserveAspectRatio="xMidYMid" style="overflow: hidden;"><path d="M112 -192c0 -53 27 -80 80 -80s80 27 80 80s-27 80 -80 80s-80 -27 -80 -80zM113 -271c-14 14 -23 29 -28 47h-85v-112c0 -13 4 -25 14 -34s22 -14 35 -14h288c13 -0 24 5 33 14s14 21 14 34v112h-84c-5 -18 -14 -33 -28 -47c-22 -22 -49 -33 -80 -33s-57 11 -79 33zM352 -300v-39c0 -4 -2 -7 -4 -9s-5 -4 -9 -4h-38c-4 -0 -7 2 -9 4s-4 5 -4 9v39c0 4 2 7 4 9s5 3 9 3h38c4 -0 7 -1 9 -3s4 -5 4 -9zM272 -113c22 -22 32 -48 32 -79h80v144c0 13 -5 24 -14 34s-20 14 -33 14h-288c-13 -0 -24 -4 -34 -14s-15 -21 -15 -34v-144h81c0 31 10 57 32 79s48 33 79 33s58 -11 80 -33z"></path></svg></a></figure>
 <div class="ed-element ed-text custom-theme" id="ed-1443864535"><p><a href="https://www.instagram.com/sculptgymbyo/?hl=en" rel="noopener noreferrer" target="_blank">Instagram</a></p></div></div></div></footer></div>
 <div class="ed-element ed-map animation-initial" id="ed-1444743312" data-animation="{&quot;type&quot;:&quot;move-bottom-to-top&quot;,&quot;initial&quot;:&quot;hide&quot;,&quot;keepHeight&quot;:true,&quot;duration&quot;:&quot;10s&quot;,&quot;delay&quot;:&quot;0s&quot;,&quot;overlay&quot;:{&quot;width&quot;:&quot;auto&quot;},&quot;trigger&quot;:&quot;scroll&quot;,&quot;group&quot;:{&quot;name&quot;:&quot;&quot;,&quot;behavior&quot;:{&quot;show&quot;:&quot;&quot;,&quot;hide&quot;:&quot;&quot;}},&quot;closeText&quot;:&quot;&quot;}"><div class="map-canvas"><iframe width="100%" height="360" frameborder="0" loading="lazy" title="Map: Sculpt Gym, 7th St., Heath Streak Academy Bulawayo" src="https://maps.google.com/maps?q=7th%20St.%2C%20Heath%20Streak%20Academy%20Bulawayo&amp;ll=-20.1508374,28.5958575&amp;z=13&amp;output=embed" allowfullscreen></iframe></div></div>
+<!-- Copyright line. The year is filled in by the script at the end of the page, so it updates itself every 1 January. -->
+<div class="site-copyright">&copy; <span class="js-year">2026</span> Sculpt Gym</div>
 <script>
 /* Banner: hide every copy of a slide until its photo has loaded; both halves of the loop stay identical, so it still loops seamlessly. */
 (function () {
@@ -510,6 +514,10 @@ Join me at the gym for amazing results!
 		g.imgs.forEach(function (i) { i.addEventListener('load', show); });
 	});
 })();
+</script>
+<script>
+/* Current year for the copyright line, taken from the visitor's device each time the page loads. */
+document.querySelectorAll('.js-year').forEach(function (el) { el.textContent = new Date().getFullYear(); });
 </script>
 <script src="vendor/jquery-3.7.1.min.js"></script>
 <script src="vendor/slick-1.8.1.min.js"></script>
